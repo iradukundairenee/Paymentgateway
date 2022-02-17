@@ -1,28 +1,24 @@
 import React from "react"
 import {
-  Button,
   Card,
-  CardBody,
+  CardHeader,
+  CardTitle,
   Row,
   Col,
-  Form,
-  FormGroup,
-  Input,
-  Label
+  Nav,
+  NavItem,
+  TabContent,
+  TabPane
 } from "reactstrap"
-import { Mail, Lock, Check} from "react-feather"
-import { history } from "../../../../history"
-import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
-
 import loginImg from "../../../../assets/img/pages/login.png"
 import "../../../../assets/scss/pages/authentication.scss"
-
+// import LoginAuth0 from "./LoginAuth0"
+import LoginFirebase from "./LoginFirebase"
+import LoginJWT from "./LoginJWT"
 
 class Login extends React.Component {
   state = {
-    activeTab: "1",
-    email : "",
-    password: ""
+    activeTab: "1"
   }
   toggle = tab => {
     if (this.state.activeTab !== tab) {
@@ -50,57 +46,37 @@ class Login extends React.Component {
                 <img src={loginImg} alt="loginImg" />
               </Col>
               <Col lg="6" md="12" className="p-0">
-                <Card className="rounded-0 mb-0 px-2">
-                      <CardBody>
-                        <h4>Login</h4>
-                        <p>Welcome back, please login to your account.</p>
-                        <Form onSubmit={e => e.preventDefault()}>
-                          <FormGroup className="form-label-group position-relative has-icon-left">
-                            <Input
-                              type="email"
-                              required=""
-                              placeholder="Email"
-                              value={this.state.email}
-                              onChange={e => this.setState({ email: e.target.value })}
-                            />
-                            <div className="form-control-position">
-                              <Mail size={15} />
-                            </div>
-                            <Label>Email</Label>
-                          </FormGroup>
-                          <FormGroup className="form-label-group position-relative has-icon-left">
-                            <Input
-                              type="password"
-                              placeholder="Password"
-                              required=""
-                              value={this.state.password}
-                              onChange={e => this.setState({ password: e.target.value })}
-                            />
-                            <div className="form-control-position">
-                              <Lock size={15} />
-                            </div>
-                            <Label>Password</Label>
-                          </FormGroup>
-                          <FormGroup className="d-flex justify-content-between align-items-center">
-                            <Checkbox
-                              color="primary"
-                              icon={<Check className="vx-icon" size={16} />}
-                              label="Remember me"
-                            />
-                            <div className="float-right">
-                              Forgot Password?
-                            </div>
-                          </FormGroup>
-                          <div className="d-flex justify-content-between">
-                            {/* <Button.Ripple color="primary" outline> */}
-                             <div tag="a">click here to register</div>                           
-                            {/* </Button.Ripple> */}
-                            <Button.Ripple color="primary" type="submit" onClick={() => history.push("/admin")}>
-                                Login 
-                            </Button.Ripple>
-                          </div>
-                        </Form>
-                      </CardBody>
+                <Card className="rounded-0 mb-0 px-2 login-tabs-container">
+                  <CardHeader className="pb-1">
+                    <CardTitle>
+                      <h4 className="mb-0">Login</h4>
+                    </CardTitle>
+                  </CardHeader>
+                  <p className="px-2 auth-title">
+                    Welcome back, please login to your account.
+                  </p>
+                  <Nav tabs className="px-2">
+                    <NavItem>
+                      
+                    </NavItem>
+                    <NavItem>
+                     
+                    </NavItem>
+                    <NavItem>
+                    
+                    </NavItem>
+                  </Nav>
+                  <TabContent activeTab={this.state.activeTab}>
+                    <TabPane tabId="1">
+                      <LoginJWT />
+                    </TabPane>
+                    <TabPane tabId="2">
+                      <LoginFirebase />
+                    </TabPane>
+                    <TabPane tabId="3">
+                      {/* <LoginAuth0 /> */}
+                    </TabPane>
+                  </TabContent>
                 </Card>
               </Col>
             </Row>

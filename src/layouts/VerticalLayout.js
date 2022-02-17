@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react"
+import React, { PureComponent} from "react"
 import classnames from "classnames"
 import Customizer from "../components/@vuexy/customizer/Customizer"
 import Sidebar from "./components/menu/vertical-menu/Sidebar"
@@ -264,19 +264,22 @@ class VerticalLayout extends PureComponent {
             "theme-primary": !menuThemeArr.includes(appProps.menuTheme)
           }
         )}>
-        <Sidebar {...sidebarProps} />
+        
+            {this.props.Auth.values? <Sidebar {...sidebarProps} /> :<></>}
+
         <div
           className={classnames("app-content content", {
             "show-overlay": this.state.appOverlay === true
           })}
           onClick={this.handleAppOverlayClick}>
-          <Navbar {...navbarProps} />
+          {this.props.Auth.values? <Navbar {...navbarProps} /> :<></>}
           <div className="content-wrapper">{this.props.children}</div>
         </div>
 
-        <Footer {...footerProps} />
+
+        {this.props.Auth.values? <Footer {...footerProps} /> :<></>}
         {appProps.disableCustomizer !== true ? (
-          <Customizer {...customizerProps} />
+          this.props.Auth.values? <Customizer {...customizerProps} /> :<></>
         ) : null}
         <div
           className="sidenav-overlay"
@@ -288,7 +291,8 @@ class VerticalLayout extends PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    app: state.customizer
+    app: state.customizer,
+    Auth:state.auth.login
   }
 }
 export default connect(mapStateToProps, {

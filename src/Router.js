@@ -6,12 +6,21 @@ import Spinner from "./components/@vuexy/spinner/Loading-spinner"
 import { ContextLayout } from "./utility/context/Layout"
 
 // Route-based code splitting
+const Login = lazy(() =>
+  import("./views/pages/authentication/login/Login")
+)
+
+const Register = lazy(() =>
+  import("./views/pages/authentication/register/Register")
+)
 const Home = lazy(() =>
   import("./views/pages/Home")
 )
 
-const Page2 = lazy(() =>
-  import("./views/pages/Page2")
+
+
+const Wallet = lazy(() =>
+  import("./views/pages/Wallet")
 )
 
 const Settings = lazy(() =>
@@ -21,18 +30,7 @@ const Settings = lazy(() =>
 const PaymentMethod = lazy(() =>
   import("./views/pages/PaymentMethod")
 )
-const Payment = lazy(() =>
-  import("./views/pages/Payment")
-)
 
-const login = lazy(() =>
-  import("./views/pages/authentication/login/Login")
-)
-const Register = lazy(() =>
-  import("./views/pages/authentication/Register/Register.js")
-)
-
-// Set Layout and Component Using App Route
 const RouteConfig = ({
   component: Component,
   fullLayout,
@@ -76,17 +74,26 @@ const AppRoute = connect(mapStateToProps)(RouteConfig)
 class AppRouter extends React.Component {
   render() {
     return (
-      // Set the directory path if you are deploying in sub-folder
       <Router history={history}>
         <Switch>
+        <AppRoute
+            exact
+            path="/Login"
+            component={Login}
+          />
+           <AppRoute
+            exact
+            path="/Register"
+            component={Register}
+          />
           <AppRoute
             exact
-            path="/admin"
+            path="/"
             component={Home}
           />
           <AppRoute
-            path="/page2"
-            component={Page2}
+            path="/wallet"
+            component={Wallet}
           />
            <AppRoute
             path="/Settings"
@@ -97,20 +104,6 @@ class AppRouter extends React.Component {
             component={PaymentMethod}
           />
 
-         <AppRoute
-            path="/Payment"
-            component={Payment}
-          />
-          <AppRoute
-            path="/"
-            component={login}
-            fullLayout
-          />
-            <AppRoute
-            path="/register"
-            component={Register}
-            fullLayout
-          />
         </Switch>
       </Router>
     )
