@@ -1,10 +1,12 @@
 import React from "react"
 import '../../../src/style.css'
+import DataTables from './payments/DataTables'
 
 class PaymentMethod extends React.Component{
   render(){
     return <>
-      <center>
+   <DataTables />
+      {/* <center>
   <h3>Payments Method</h3>
    <table id="rwd-table" style={{height:"200px"}} className="table">
   <thead>
@@ -18,21 +20,21 @@ class PaymentMethod extends React.Component{
     <tr>
       <td>MTN</td>
       <td>2000rwf</td>
-      <td><div style={{backgroundColor:'blue',color:'white',borderRadius:'5px' ,width:'50%',cursor:"pointer"}}>manage</div></td>
+      <td><div style={{backgroundColor:'blue',color:'white',borderRadius:'5px' ,width:'60px',cursor:"pointer"}}>manage</div></td>
     </tr>
     <tr>
       <td>Air tel</td>
       <td>3000rwf</td>
-      <td><div style={{backgroundColor:'blue',color:'white',borderRadius:'5px' ,width:'50%',cursor:"pointer"}}>manage</div></td>
+      <td><div style={{backgroundColor:'blue',color:'white',borderRadius:'5px' ,width:'60px',cursor:"pointer"}}>manage</div></td>
     </tr>
     <tr>
       <td>bank of kigali</td>
       <td>4000rwf</td>
-      <td><div style={{backgroundColor:'blue',color:'white',borderRadius:'5px' ,width:'50%',cursor:"pointer"}}>manage</div></td>
+      <td><div style={{backgroundColor:'blue',color:'white',borderRadius:'5px' ,width:'60px',cursor:"pointer"}}>manage</div></td>
     </tr>
   </tbody>
 </table>
-   </center>
+   </center> */}
    
    
   </>
