@@ -12,7 +12,6 @@ import {
 } from "reactstrap"
 import loginImg from "../../../../assets/img/pages/login.png"
 import "../../../../assets/scss/pages/authentication.scss"
-// import LoginAuth0 from "./LoginAuth0"
 import LoginFirebase from "./LoginFirebase"
 import LoginJWT from "./LoginJWT"
 
