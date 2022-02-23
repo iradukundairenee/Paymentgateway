@@ -3,20 +3,20 @@ import * as Icon from "react-feather"
 
 const horizontalMenuConfig = [
   {
-    id: "home",
-    title: "Home",
+    id: "dashboard",
+    title: "dashboard",
     type: "item",
     icon: <Icon.Home size={20} />,
     permissions: ["admin", "editor"],
-    navLink: "/",
+    navLink: "/Dashboard",
   },
   {
-    id: "page2",
-    title: "Page 2",
+    id: "reseller",
+    title: "Reseller",
     type: "item",
     icon: <Icon.File size={20} />,
     permissions: ["admin", "editor"],
-    navLink: "/page2",
+    navLink: "/Reseller",
   }  
 ]
 

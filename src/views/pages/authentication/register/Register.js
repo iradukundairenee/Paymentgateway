@@ -8,17 +8,17 @@ import {
   Col,
   Nav,
   NavItem,
-  NavLink,
+  // NavLink,
   TabContent,
   TabPane
 } from "reactstrap"
-import classnames from "classnames"
+// import classnames from "classnames"
 import RegisterFirebase from "./RegisterFirebase"
 // import RegisterAuth0 from "./RegisterAuth0"
 import RegisterJWT from "./RegisterJWT"
 import registerImg from "../../../../assets/img/pages/register.jpg"
 import "../../../../assets/scss/pages/authentication.scss"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 
 class Register extends React.Component {
   state = {

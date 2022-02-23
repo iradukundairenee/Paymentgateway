@@ -5,8 +5,15 @@ const navigationConfig = [
     title: "Dashboard",
     type: "item",
     permissions: ["admin", "editor"],
-    navLink: "/"
+    navLink: "/Dashboard"
   },
+  {
+    id: "reseller",
+    title: "Resellers",
+    type: "item",
+    permissions: ["admin", "editor"],
+    navLink: "/Reseller",
+  } ,
   {
     id: "paymentMethod",
     title: "paymentMethod",

@@ -4,38 +4,50 @@ import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
 import { Check } from "react-feather"
 import { connect } from "react-redux"
 import { signupWithJWT } from "../../../../redux/actions/auth/registerActions"
-import { history } from "../../../../history"
+// import { history } from "../../../../history"
 import {Link} from 'react-router-dom'
 
 class RegisterJWT extends React.Component {
   state = {
+    names:"",
+    username:"",
     email: "",
-    password: "",
-    name: "",
-    confirmPass: ""
+    password: ""
+    // confirmPass: ""
   }
 
   handleRegister = e => {
     e.preventDefault()
     this.props.signupWithJWT(
+      this.state.names,
+      this.state.username,
       this.state.email,
-      this.state.password,
-      this.state.name
+      this.state.password
     )
   }
 
   render() {
     return (
-      <Form action="/" onSubmit={this.handleRegister}>
+      <Form action="/Dashboard" onSubmit={this.handleRegister}>
         <FormGroup className="form-label-group">
           <Input
             type="text"
             placeholder="Name"
             required
-            value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
+            value={this.state.names}
+            onChange={e => this.setState({ names: e.target.value })}
           />
-          <Label>Name</Label>
+          <Label>Names</Label>
+        </FormGroup>
+        <FormGroup className="form-label-group">
+          <Input
+            type="text"
+            placeholder="Username"
+            required
+            value={this.state.username}
+            onChange={e => this.setState({ username: e.target.value })}
+          />
+          <Label>Username</Label>
         </FormGroup>
         <FormGroup className="form-label-group">
           <Input
@@ -57,7 +69,7 @@ class RegisterJWT extends React.Component {
           />
           <Label>Password</Label>
         </FormGroup>
-        <FormGroup className="form-label-group">
+        {/* <FormGroup className="form-label-group">
           <Input
             type="password"
             placeholder="Confirm Password"
@@ -66,7 +78,7 @@ class RegisterJWT extends React.Component {
             onChange={e => this.setState({ confirmPass: e.target.value })}
           />
           <Label>Confirm Password</Label>
-        </FormGroup>
+        </FormGroup> */}
         <FormGroup>
           <Checkbox
             color="primary"
@@ -79,7 +91,7 @@ class RegisterJWT extends React.Component {
           {/* <Button.Ripple
             color="primary"
             outline> */}
-              <Link to="/Login">
+              <Link to="/">
               Login
               </Link>
           {/* </Button.Ripple> */}

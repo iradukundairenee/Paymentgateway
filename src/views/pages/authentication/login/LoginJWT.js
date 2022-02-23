@@ -5,12 +5,12 @@ import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
 import { Mail, Lock, Check } from "react-feather"
 import { loginWithJWT } from "../../../../redux/actions/auth/loginActions"
 import { connect } from "react-redux"
-import { history } from "../../../../history"
+// import { history } from "../../../../history"
 
 class LoginJWT extends React.Component {
   state = {
-    email: "demo@demo.com",
-    password: "demodemo",
+    email: "",
+    password: "",
     remember: false
   }
 
@@ -22,7 +22,7 @@ class LoginJWT extends React.Component {
     return (
       <React.Fragment>
         <CardBody className="pt-1">
-          <Form action="/" onSubmit={this.handleLogin}>
+          <Form action="/Dashboard" onSubmit={this.handleLogin}>
             <FormGroup className="form-label-group position-relative has-icon-left">
               <Input
                 type="email"

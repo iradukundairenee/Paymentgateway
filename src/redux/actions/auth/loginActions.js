@@ -182,22 +182,26 @@ export const loginWithGithub = () => {
 export const loginWithJWT = user => {
   return dispatch => {
     axios
-      .post("/api/authenticate/login/user", {
+      .post("http://localhost:5000/api/users/login", {
         email: user.email,
         password: user.password
       })
       .then(response => {
-        var loggedInUser
-
-        if (response.data) {
+        let loggedInUser 
+        const {token} =response.data;
+        if (response.data && token) {
+          
+          localStorage.setItem('token', token);
           loggedInUser = response.data.user
 
           dispatch({
             type: "LOGIN_WITH_JWT",
             payload: { loggedInUser, loggedInWith: "jwt" }
           })
-
-          history.push("/")
+          history.push("/Dashboard")
+        }
+        else{
+          console.log('invalid user');
         }
       })
       .catch(err => console.log(err))

@@ -78,7 +78,7 @@ class AppRouter extends React.Component {
         <Switch>
         <AppRoute
             exact
-            path="/Login"
+            path="/"
             component={Login}
           />
            <AppRoute
@@ -88,7 +88,7 @@ class AppRouter extends React.Component {
           />
           <AppRoute
             exact
-            path="/"
+            path="/Dashboard"
             component={Home}
           />
           <AppRoute
