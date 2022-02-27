@@ -44,6 +44,11 @@ class VerticalLayout extends PureComponent {
   }
 
   componentDidMount() {
+   
+    if(!this.props.Auth.values){
+      return this.props.history.push('/');
+      
+    }
     this.mounted = true
     let {
       location: { pathname },
@@ -163,6 +168,7 @@ class VerticalLayout extends PureComponent {
 
   componentWillUnmount() {
     this.mounted = false
+
   }
 
   handleCurrentLanguage = lang => {
@@ -292,7 +298,8 @@ class VerticalLayout extends PureComponent {
 const mapStateToProps = state => {
   return {
     app: state.customizer,
-    Auth:state.auth.login
+    Auth:state.auth.login,
+    // Register:state.auth.register
   }
 }
 export default connect(mapStateToProps, {

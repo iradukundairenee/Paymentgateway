@@ -4,6 +4,8 @@ import "firebase/auth"
 import "firebase/database"
 import axios from "axios"
 import { config } from "../../../authServices/firebase/firebaseConfig"
+import {toast} from 'react-toastify'
+
 
 // Init firebase if not already initialized
 if (!firebase.apps.length) {
@@ -187,38 +189,45 @@ export const loginWithJWT = user => {
         password: user.password
       })
       .then(response => {
-        let loggedInUser 
+     
         const {token} =response.data;
         if (response.data && token) {
           
           localStorage.setItem('token', token);
-          loggedInUser = response.data.user
+         let loggedInUser = response.data.user
 
           dispatch({
             type: "LOGIN_WITH_JWT",
-            payload: { loggedInUser, loggedInWith: "jwt" }
+            payload: { loggedInUser, loggedInWith: "jwt",token }
           })
           history.push("/Dashboard")
+          const user=response.data.message;
+          console.log(`welcome ${user}`)
+          return toast.success(`welcome here`);
         }
         else{
-          console.log('invalid user');
+          console.log("invalid user");
+          return toast.error(response.data.message);
         }
       })
-      .catch(err => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        return toast(err); 
+      })
   }
 }
 
 export const logoutWithJWT = () => {
   return dispatch => {
     dispatch({ type: "LOGOUT_WITH_JWT", payload: {} })
-    history.push("/pages/login")
+    history.push("/")
   }
 }
 
 export const logoutWithFirebase = user => {
   return dispatch => {
     dispatch({ type: "LOGOUT_WITH_FIREBASE", payload: {} })
-    history.push("/pages/login")
+    history.push("/")
   }
 }
 

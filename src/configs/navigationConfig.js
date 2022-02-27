@@ -15,11 +15,11 @@ const navigationConfig = [
     navLink: "/Reseller",
   } ,
   {
-    id: "paymentMethod",
-    title: "paymentMethod",
+    id: "Transaction",
+    title: "Transaction",
     type: "item",
     permissions: ["admin", "editor"],
-    navLink: "/PaymentMethod"
+    navLink: "/Transaction"
   },
   {
     id: "wallet",

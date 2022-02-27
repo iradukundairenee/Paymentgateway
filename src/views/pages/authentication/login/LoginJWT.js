@@ -1,11 +1,11 @@
 import React from "react"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { CardBody, FormGroup, Form, Input, Button, Label } from "reactstrap"
 import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
 import { Mail, Lock, Check } from "react-feather"
 import { loginWithJWT } from "../../../../redux/actions/auth/loginActions"
 import { connect } from "react-redux"
-// import { history } from "../../../../history"
+import { toast } from 'react-toastify';
 
 class LoginJWT extends React.Component {
   state = {
@@ -16,7 +16,13 @@ class LoginJWT extends React.Component {
 
   handleLogin = e => {
     e.preventDefault()
-    this.props.loginWithJWT(this.state)
+    if(!this.state){
+      toast("invalid user");
+    }
+   
+     return this.props.loginWithJWT(this.state)
+    
+    
   }
   render() {
     return (
@@ -58,18 +64,20 @@ class LoginJWT extends React.Component {
                 onChange={this.handleRemember}
               />
             </FormGroup>
-            <div className="d-flex justify-content-between">
-              <Button.Ripple
+            {/* <div className="d-flex justify-content-between" style={{marginLeft:'-10%'}}> */}
+            <div style={{marginLeft:'10%'}}>
+              {/* <Button
                 color="primary"
                 outline
               >
                 <Link to="/Register">
                 Register
                 </Link>
-              </Button.Ripple>
-              <Button.Ripple color="primary" type="submit">
+              </Button> */}
+              &nbsp;
+              <Button color="primary" type="submit">
                 Login
-              </Button.Ripple>
+              </Button>
             </div>
           </Form>
         </CardBody>

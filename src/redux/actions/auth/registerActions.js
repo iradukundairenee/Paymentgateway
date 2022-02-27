@@ -4,6 +4,8 @@ import "firebase/auth"
 import "firebase/database"
 import axios from "axios"
 import { config } from "../../../authServices/firebase/firebaseConfig"
+import {toast} from 'react-toastify'
+
 
 // Init firebase if not already initialized
 if (!firebase.apps.length) {
@@ -64,23 +66,29 @@ export const signupWithJWT = (names,username,email,password) => {
         password: password,
       })
       .then(response => {
-        var loggedInUser
+        
 
         if(response.data){
 
-          loggedInUser = response.data.user
+         let registerInUser = response.data.user
 
           localStorage.setItem("token", response.data.token)
 
           dispatch({
-            type: "LOGIN_WITH_JWT",
-            payload: { loggedInUser, loggedInWith: "jwt" }
+            type: "SIGNUP_WITH_JWT",
+            payload: { registerInUser, registerInWith: "jwt" }
           })
-
-          history.push("/Dashboard")
+          history.push('/Reseller') ;
+              return toast.success(response.data.message);
+        }
+        else{
+          return toast.error(response.data.message);
         }
       })
-      .catch(err => console.log(err))
+      .catch((err) => {
+        console.log(err)
+      }
+      )
 
   }
 }

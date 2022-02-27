@@ -45,7 +45,7 @@ class createApi extends React.Component {
             <CardBody>
               <Form onSubmit={this.handleSubmit}>
                 <Row>
-                  <Col md="6" sm="12" className="mb-2">
+                  <Col md="12" sm="12" className="mb-2">
                     <FormGroup>
                       <Label for="GenerateKey">GenerateKey</Label>
                       <Input
@@ -68,32 +68,9 @@ class createApi extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <Col md="6" sm="12" className="mb-2">
-                    <FormGroup>
-                      <Label for="passphrase">passphrase</Label>
-                      <Input
-                        type="text"
-                        onChange={e => this.setState({ passphrase: e.target.value })}
-                        value={this.state.lastName}
-                        id="passphrase"
-                        name="passphrase"
-                        valid={this.state.isValid === true}
-                        invalid={this.state.isValid === false}
-                      />
-                      {this.state.isValid ? (
-                        <span className="valid-tooltip">Looks Good!</span>
-                      ) : this.state.isValid === false ? (
-                        <span className="invalid-tooltip" style={{marginLeft:'15px'}}>
-                          Please enter passphrase
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                    </FormGroup>
-                  </Col>
                 </Row>
                 <Button.Ripple color="primary" onClick={this.handleSubmit}>
-                  Save
+                  create
                 </Button.Ripple>
               </Form>
             </CardBody>

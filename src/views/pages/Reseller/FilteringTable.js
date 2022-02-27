@@ -9,12 +9,12 @@ class FilterTable extends React.Component {
     data: makeData()
   }
   render() {
-    // const {data} =this.state
-    const data=this.props.getAllTransactions.value
+    const { data } = this.state
+
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Transaction History</CardTitle>
+          <CardTitle>Seraching and Sorting</CardTitle>
         </CardHeader>
         <CardBody>
           <ReactTable
@@ -25,25 +25,35 @@ class FilterTable extends React.Component {
             }
             columns={[
               {
+                Header: "Name",
                 columns: [
                   {
-                    Header: "Service",
-                    id: "service",
-                    accessor: d => d.service,
+                    Header: "First Name",
+                    accessor: "firstName",
+                    filterMethod: (filter, row) =>
+                      row[filter.id].startsWith(filter.value) &&
+                      row[filter.id].endsWith(filter.value)
+                  },
+                  {
+                    Header: "Last Name",
+                    id: "lastName",
+                    accessor: d => d.lastName,
                     filterMethod: (filter, rows) =>
-                      matchSorter(rows, filter.value, { keys: ["service"] }),
+                      matchSorter(rows, filter.value, { keys: ["lastName"] }),
                     filterAll: true
                   }
                 ]
               },
               {
+                Header: "Info",
                 columns: [
                   {
-                    Header: "Amount",
-                    accessor: "Amount"
+                    Header: "Age",
+                    accessor: "age"
                   },
                   {
-                    accessor: "Amount",
+                    Header: "Over 21",
+                    accessor: "age",
                     id: "over",
                     Cell: ({ value }) => (value >= 21 ? "Yes" : "No"),
                     filterMethod: (filter, row) => {
@@ -62,8 +72,8 @@ class FilterTable extends React.Component {
                         value={filter ? filter.value : "all"}
                       >
                         <option value="all">Show All</option>
-                        <option value="true">Paid</option>
-                        <option value="false">not Paid</option>
+                        <option value="true">Can Drink</option>
+                        <option value="false">Can't Drink</option>
                       </select>
                     )
                   }

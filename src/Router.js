@@ -17,6 +17,17 @@ const Home = lazy(() =>
   import("./views/pages/Home")
 )
 
+const Transaction = lazy(() =>
+  import("./views/pages/Transaction")
+)
+const Reseller = lazy(() =>
+  import("./views/pages/Reseller/ReactTables")
+)
+
+// const UserEdit = lazy(() =>
+//   import("./views/pages/edit/Information")
+// )
+
 
 
 const Wallet = lazy(() =>
@@ -91,6 +102,23 @@ class AppRouter extends React.Component {
             path="/Dashboard"
             component={Home}
           />
+              <AppRoute
+            exact
+            path="/Reseller"
+            component={Reseller}
+          />
+
+          <AppRoute
+            exact
+            path="/Transaction"
+            component={Transaction}
+          />
+          {/* <AppRoute
+            exact
+            path="/UserEdit"
+            component={UserEdit}
+          /> */}
+
           <AppRoute
             path="/wallet"
             component={Wallet}

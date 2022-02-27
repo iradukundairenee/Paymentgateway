@@ -12,8 +12,7 @@ import axios from "axios"
 import * as Icon from "react-feather"
 import classnames from "classnames"
 import Autocomplete from "../../../components/@vuexy/autoComplete/AutoCompleteComponent"
-import { history } from "../../../history"
-
+import {Link} from 'react-router-dom'
 
 const UserDropdown = props => {
   return (
@@ -23,13 +22,11 @@ const UserDropdown = props => {
         <span className="align-middle">Edit Profile</span>
       </DropdownItem>
      <DropdownItem divider />
-      <DropdownItem
-        tag="a"
-        href="#"
-        onClick={e => history.push("/pages/login")}
-      >
+      <DropdownItem>
+        <Link to="#">
         <Icon.Power size={14} className="mr-50" />
         <span className="align-middle">Log Out</span>
+        </Link>
       </DropdownItem>
     </DropdownMenu>
   )

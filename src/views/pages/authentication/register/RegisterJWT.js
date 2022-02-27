@@ -1,11 +1,11 @@
 import React from "react"
 import { Form, FormGroup, Input, Label, Button } from "reactstrap"
-import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
-import { Check } from "react-feather"
+// import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
+// import { Check } from "react-feather"
 import { connect } from "react-redux"
 import { signupWithJWT } from "../../../../redux/actions/auth/registerActions"
 // import { history } from "../../../../history"
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 class RegisterJWT extends React.Component {
   state = {
@@ -59,7 +59,7 @@ class RegisterJWT extends React.Component {
           />
           <Label>Email</Label>
         </FormGroup>
-        <FormGroup className="form-label-group">
+         <FormGroup className="form-label-group">
           <Input
             type="password"
             placeholder="Password"
@@ -68,7 +68,7 @@ class RegisterJWT extends React.Component {
             onChange={e => this.setState({ password: e.target.value })}
           />
           <Label>Password</Label>
-        </FormGroup>
+        </FormGroup> 
         {/* <FormGroup className="form-label-group">
           <Input
             type="password"
@@ -79,25 +79,27 @@ class RegisterJWT extends React.Component {
           />
           <Label>Confirm Password</Label>
         </FormGroup> */}
-        <FormGroup>
+        {/* <FormGroup>
           <Checkbox
             color="primary"
             icon={<Check className="vx-icon" size={16} />}
             label=" I accept the terms & conditions."
             defaultChecked={true}
           />
-        </FormGroup>
-        <div className="d-flex justify-content-between" style={{justifyContent:'space-between'}}>
-          {/* <Button.Ripple
+        </FormGroup> */}
+        {/* <div className="d-flex justify-content-between" style={{marginLeft:'-10%'}}> */}
+        <div>
+          {/* <Button
             color="primary"
-            outline> */}
+            outline>
               <Link to="/">
               Login
               </Link>
-          {/* </Button.Ripple> */}
-          <Button.Ripple color="primary" type="submit">
-            Register
-          </Button.Ripple>
+          </Button>
+          &nbsp; */}
+          <Button color="primary" type="submit">
+            save
+          </Button>
         </div>
       </Form>
     )

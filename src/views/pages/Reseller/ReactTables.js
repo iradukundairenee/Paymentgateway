@@ -1,21 +1,23 @@
 import React from "react"
 import { Row, Col } from "reactstrap"
-import SimpleTable from './SimpleTable'
+import SimpleTable from "./SimpleTable"
 import "react-table/react-table.css"
 import "../../../assets/scss/plugins/extensions/react-tables.scss"
 import {connect } from 'react-redux'
-import {getAllTransactions} from '../../../redux/actions/auth/tansactionAction'
+import {getAllUser} from '../../../redux/actions/auth/ResellersAction'
+
 
 class ReactTables extends React.Component {
   componentDidMount(){
-    this.props.dispatch(getAllTransactions());
+    this.props.dispatch(getAllUser())
+;
   }
   render() {
     return (
       <React.Fragment>
         <Row>
           <Col sm="12">
-            <SimpleTable transactions={this.props.state.auth.getAllTransactions}/>
+            <SimpleTable resellers={this.props.state.auth.reseller}/>
           </Col>
         </Row>
       </React.Fragment>
@@ -34,7 +36,6 @@ const mapDispatchToProps = dispatch => {
     dispatch
   }
 }
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps

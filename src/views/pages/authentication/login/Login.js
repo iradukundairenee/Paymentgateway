@@ -6,7 +6,6 @@ import {
   Row,
   Col,
   Nav,
-  NavItem,
   TabContent,
   TabPane
 } from "reactstrap"
@@ -28,7 +27,7 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <Row className="m-0 justify-content-center">
+      <Row className="m-0">
         <Col
           sm="8"
           xl="7"
@@ -55,15 +54,7 @@ class Login extends React.Component {
                     Welcome back, please login to your account.
                   </p>
                   <Nav tabs className="px-2">
-                    <NavItem>
-                      
-                    </NavItem>
-                    <NavItem>
-                     
-                    </NavItem>
-                    <NavItem>
-                    
-                    </NavItem>
+                   
                   </Nav>
                   <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">
@@ -71,9 +62,6 @@ class Login extends React.Component {
                     </TabPane>
                     <TabPane tabId="2">
                       <LoginFirebase />
-                    </TabPane>
-                    <TabPane tabId="3">
-                      {/* <LoginAuth0 /> */}
                     </TabPane>
                   </TabContent>
                 </Card>

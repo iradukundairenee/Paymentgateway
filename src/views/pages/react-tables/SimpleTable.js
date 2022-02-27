@@ -1,60 +1,39 @@
 import React from "react"
 import { Card, CardHeader, CardTitle, CardBody } from "reactstrap"
 import ReactTable from "react-table"
-import { makeData } from "./TableData"
 
 class SimpleTable extends React.Component {
-  state = {
-    data: makeData()
-  }
-  render() {
-    const { data } = this.state
 
+ 
+  
+  render() {
+    const data=this.props.transactions.values
+    console.log(data,"byakunze")
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Simple</CardTitle>
+          <CardTitle>List of Transaction</CardTitle>
         </CardHeader>
         <CardBody>
           <ReactTable
             data={data}
             columns={[
               {
-                Header: "Name",
                 columns: [
                   {
-                    Header: "First Name",
-                    accessor: "firstName"
+                    Header: "Name",
+                    accessor: "Name"
                   },
                   {
-                    Header: "Last Name",
-                    id: "lastName",
-                    accessor: d => d.lastName
-                  }
+                  Header: "Service",
+                  accessor: "service"
+                },
+                {
+                  Header: "Amount",
+                  accessor: "Amount"
+                }
                 ]
               },
-              {
-                Header: "Info",
-                columns: [
-                  {
-                    Header: "Age",
-                    accessor: "age"
-                  },
-                  {
-                    Header: "Status",
-                    accessor: "status"
-                  }
-                ]
-              },
-              {
-                Header: "Stats",
-                columns: [
-                  {
-                    Header: "Visits",
-                    accessor: "visits"
-                  }
-                ]
-              }
             ]}
             defaultPageSize={10}
             className="-striped -highlight"

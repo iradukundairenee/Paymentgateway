@@ -6,19 +6,15 @@ import {
   CardBody,
   Row,
   Col,
-  Nav,
-  NavItem,
-  // NavLink,
+  // Nav,
   TabContent,
   TabPane
 } from "reactstrap"
-// import classnames from "classnames"
-import RegisterFirebase from "./RegisterFirebase"
-// import RegisterAuth0 from "./RegisterAuth0"
+    
+// import RegisterFirebase from "./RegisterFirebase"
 import RegisterJWT from "./RegisterJWT"
-import registerImg from "../../../../assets/img/pages/register.jpg"
+// import registerImg from "../../../../assets/img/pages/register.jpg"
 import "../../../../assets/scss/pages/authentication.scss"
-// import { Link } from "react-router-dom"
 
 class Register extends React.Component {
   state = {
@@ -33,7 +29,7 @@ class Register extends React.Component {
   }
   render() {
     return (
-      <Row className="m-0 justify-content-center">
+      <Row className="m-0">
         <Col
           sm="8"
           xl="7"
@@ -43,43 +39,27 @@ class Register extends React.Component {
         >
           <Card className="bg-authentication rounded-0 mb-0 w-100">
             <Row className="m-0">
-              <Col
+              {/* <Col
                 lg="6"
                 className="d-lg-block d-none text-center align-self-center px-1 py-0"
               >
                 <img className="mr-1" src={registerImg} alt="registerImg" />
-              </Col>
-              <Col lg="6" md="12" className="p-0">
+              </Col> */}
+              <Col lg="12" md="12" className="p-0">
                 <Card className="rounded-0 mb-0 p-2">
                   <CardHeader className="pb-1 pt-50">
                     <CardTitle>
-                      <h4 className="mb-0">Create Account</h4>
+                      <h4 className="mb-0">Create New Reseller</h4>
                     </CardTitle>
                   </CardHeader>
-                  <p className="px-2 auth-title mb-0">
+                  {/* <p className="px-2 auth-title mb-0">
                     Fill the below form to create a new account.
-                  </p>
-                  <Nav tabs className="px-2">
-                    <NavItem>
-                  
-                    </NavItem>
-                    <NavItem>
-                      
-                    </NavItem>
-                    <NavItem>
-                     
-                    </NavItem>
-                  </Nav>
+                  </p> */}
+                
                   <CardBody className="pt-1 pb-50">
                     <TabContent activeTab={this.state.activeTab}>
                       <TabPane tabId="1">
                         <RegisterJWT />
-                      </TabPane>
-                      <TabPane tabId="2">
-                        <RegisterFirebase />
-                      </TabPane>
-                      <TabPane tabId="3">
-                        {/* <RegisterAuth0 /> */}
                       </TabPane>
                     </TabContent>
                   </CardBody>
